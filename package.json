@@ -1,0 +1,38 @@
+{
+  "name": "restfullapi",
+  "version": "1.0.0",
+  "description": "Restfull api",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maihien244/apiMusicApp.git"
+  },
+  "author": "Mai Văn Hiền",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maihien244/apiMusicApp/issues"
+  },
+  "homepage": "https://github.com/maihien244/apiMusicApp#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cloudinary": "^1.21.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^6.10.0",
+    "path": "^0.12.7",
+    "streamifier": "^0.1.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7",
+    "mongoose": "^8.9.7",
+    "nodemon": "^3.1.9"
+  }
+}
