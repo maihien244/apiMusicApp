@@ -7,7 +7,7 @@ const userRoutes = require('./user')
 const authRoutes = require('./auth')
 
 function routes(app) {
-    // app.use('/admin', adminRoutes)
+    app.use('/admin', adminRoutes)
     app.use('/artist', artistRoutes)
     app.use('/auth', authRoutes)
     console.log(1)

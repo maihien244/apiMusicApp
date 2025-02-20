@@ -11,6 +11,9 @@ const Song = require('../../models/Song')
 const cloudinary = require('../../config/cloudinary')
 const streamifier = require('streamifier')
 const Album = require('../../models/Album')
+const Admin = require('../../models/Admin')
+
+const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 function ArtistController() {
     return {
@@ -156,6 +159,19 @@ function ArtistController() {
                         list: song[0].toObject()._id.toString(),
                     }
                 }, {session})
+
+                const date = new Date()
+                
+                await Admin.findOneAndUpdate({
+                    idYear: date.getFullYear().toString(),
+                    idMonth: month[date.getMonth()]
+                }, {
+                    $inc: { pending: 1},
+                }, {
+                    session,
+                    upsert: true,
+                })
+
                 message = {
                     status: 200,
                     type: 'success',

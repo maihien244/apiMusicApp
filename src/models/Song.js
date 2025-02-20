@@ -13,7 +13,7 @@ const songSchema = new mongoose.Schema({
     likes: { type: String, default: 0},
     streams: { type: String, default: 0},
     deleted: { type: Boolean, default: false},
-    pendind: { type: Boolean, default: true},
+    pending: { type: Boolean, default: true},
     
     public_id: {},
 })

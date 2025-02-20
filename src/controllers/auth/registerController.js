@@ -9,7 +9,9 @@ const Account = require('../../models/Account')
 const Token = require('../../models/Token')
 const User = require('../../models/User')
 const Artist = require('../../models/Artist')
+const Admin = require('../../models/Admin')
 
+const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 function registerController() {
   return {
@@ -69,6 +71,21 @@ function registerController() {
                 await Account.create([req.body], { session: session})
                 account = await Account.findOneAndUpdate({ email: req.body.email }, {}, {session: session})
             }
+
+            const date = new Date()
+
+            await Admin.findOneAndUpdate({
+                idYear: date.getFullYear().toString(),
+                idMonth: month[date.getMonth()]
+            }, {
+                $inc: {
+                    new_user: (req.body.role == 'user') ? 1 : 0,
+                    new_artist: (req.body.role == 'artist') ? 1 : 0,
+                },
+            }, {
+                session,
+                upsert: true,
+            })
 
             if(req.body.role == 'user') {
                 await User.create([{

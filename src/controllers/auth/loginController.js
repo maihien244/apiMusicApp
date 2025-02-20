@@ -9,6 +9,7 @@ function loginController() {
     // GET /users
       checkUserLogin: async (req, res, next) => {
           try {
+                
               console.log('checkUserLogin controller')
 
               const text_input = req.body.text_input
